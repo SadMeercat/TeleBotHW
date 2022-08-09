@@ -80,5 +80,5 @@ def to_json(text: list):
     with open('phones_json.json', 'a', encoding = 'utf-8') as file:
         json.dump(text, file, ensure_ascii = False, indent = 1)
 
-convert_to_csv('C:\study\Python\PythonHomeWorks\GroupHW_Python_Contacts\phones.txt') #тестовая строка - убрать
-convert_to_json('C:\study\Python\PythonHomeWorks\GroupHW_Python_Contacts\phones.txt') #тестовая строка - убрать
+#convert_to_csv('C:\study\Python\PythonHomeWorks\GroupHW_Python_Contacts\phones.txt') #тестовая строка - убрать
+#convert_to_json('C:\study\Python\PythonHomeWorks\GroupHW_Python_Contacts\phones.txt') #тестовая строка - убрать

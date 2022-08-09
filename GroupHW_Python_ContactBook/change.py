@@ -1,44 +1,63 @@
-# ввод данных пользователем и запись в файл
+#инициализация переменных 
+def __init__():
+    global file
+    file = 'GroupHW_Python_ContactBook\phones.txt'
+
+def add_contact(cont_data: list) -> str:
+    try:
+        with open(file, 'r', encoding='utf-8') as data:
+            my_data = data.readlines()
+        last_id = my_data[len(my_data) - 1].split(' ')[0]
+        tmp_contact = f"{int(last_id) + 1} {cont_data[0]}\t{cont_data[1]}\t\
+        {cont_data[2]}\t{cont_data[3]}\t{cont_data[4]}"
+        with open(file,'a', encoding='utf-8') as data:
+            data.write(tmp_contact)
+        return "Контакт успешно добавлен"
+    except:
+        return "Что-то пошло не так... У программиста кривые руки"
+
+def delete_contact(id) -> str:
+    with open(file,'r',encoding='utf-8') as data:
+        my_data = data.readlines()
+    title = my_data[0]
+    del my_data[0]
+    del my_data[int(id)-1]
+
+    counter = 1
+    tmp_list = []
+    for i in my_data:
+        tmp_list.append(i.split(" "))
+    print(tmp_list)
+    my_data.clear()
+    my_data.append(title)
+    for i in tmp_list:
+        i[0] = str(counter)
+        my_data.append(f"{i[0]} {i[1]}")
+        counter += 1
+    
+    with open(file,'w',encoding='utf-8') as data:
+        data.writelines(my_data)
+    return "Контакт успешно удален"
+
+def change_contact(id, cont_data: list) -> str:
+    try:
+        with open(file,'r',encoding='utf-8') as data:
+            my_file = data.readlines()
+        for i in my_file:
+            if i.split(" ")[0] == str(id):
+                contact = i.split(" ")[1]
+                break
+        new_data = ''
+
+        print(contact)
+        return "Контакт успешно именен"
+    except UnboundLocalError:
+        return "Такого пользователя не найдено"
 
 
-def add_contact():  
-    id = input('введите номер id')                    
-    name = input('Имя: ')
-    surname = input('Фамилия: ')
-    middlename = input ('Отчество: ')
-    phone = input('Номер телефона: ')
-    comment = input('Комментарий: ')
-    return [id, name, surname, middlename, phone, comment]
-
-    def write_data_one_string(data):
-        data_str = ''
-    for each in data:
-        data_str += each + ';'
-    data_str += '\n'
-    with open('phones.txt', 'a') as file:
-        file.write(data_str)
-
-
-def write_data_dif_string(data):
-    with open('phones.txt', 'a') as file:
-        for each in data:
-            file.write(each)
-            file.write('\n')
-
-
-
-def delete_contact(self):
-        self.loadAll()
-
-        entry_to_delete = input("Введите имя контакта: ")
-        if entry_to_delete in self.phonebook.keys():
-            del self.phonebook[entry_to_delete]
-            file = open(self.phones.txt, 'w')
-            for name, number in self.phonebook.items():
-                string = name + '\t' + number + '\n'
-                file.write(string)
-            file.close()
-            print("Контакт удален успешно")
-        else:
-            print("Контакт не найден")
-
+#debug
+if __name__ == "__main__":
+    __init__()
+    #add_contact(["qwe","qwe","qwe","qwe","qwe"])
+    #delete_contact(1)
+    change_contact(1,["",""])
