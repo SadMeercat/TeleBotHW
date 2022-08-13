@@ -11,7 +11,7 @@ source_markup.add(source_markup_btn1,source_markup_btn2)
 
 contacts_markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 tmp_list = ['Посмотреть контакты','Добавить контакт',
-'Удалить контакт', 'Найти по имени', 'Найти по номеру', 'Экспорт',
+'Удалить контакт','Изменить контакт','Экспорт',
 'Импорт']
 
 for i in tmp_list:

@@ -1,5 +1,5 @@
+#Модуль, отвечающий за изменение контактов (Удаление, добавление, изменение)
 from functools import reduce
-
 
 def __init__():
     global file
@@ -82,4 +82,4 @@ if __name__ == "__main__":
     __init__()
     #add_contact(["qwe","qwe","qwe","qwe","qwe"])
     #delete_contact(1)
-    change_contact(1,["","","qwe","qwe","qwe"])
+    #change_contact(1,["","","qwe","qwe","qwe"])
