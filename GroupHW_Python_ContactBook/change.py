@@ -1,16 +1,15 @@
 #Модуль, отвечающий за изменение контактов (Удаление, добавление, изменение)
 from functools import reduce
 
-def __init__():
-    global file
-    file = 'GroupHW_Python_ContactBook\phones.txt'
+global file
+file = 'GroupHW_Python_ContactBook\phones.txt'
 
 def add_contact(cont_data: list) -> str:
     try:
         with open(file, 'r', encoding='utf-8') as data:
             my_data = data.readlines()
-        last_id = my_data[len(my_data) - 1].split(' ')[0]
-        tmp_contact = f"{int(last_id) + 1} {cont_data[0]}\t{cont_data[1]}\t\
+        last_id = my_data[len(my_data) - 1].split('\t')[0]
+        tmp_contact = f"{int(last_id) + 1}\t{cont_data[0]}\t{cont_data[1]}\t\
         {cont_data[2]}\t{cont_data[3]}\t{cont_data[4]}"
         with open(file,'a', encoding='utf-8') as data:
             data.write(tmp_contact)
@@ -28,12 +27,12 @@ def delete_contact(id) -> str:
     counter = 1
     tmp_list = []
     for i in my_data:
-        tmp_list.append(i.split(" "))
+        tmp_list.append(i.split("\t"))
     my_data.clear()
     my_data.append(title)
     for i in tmp_list:
         i[0] = str(counter)
-        my_data.append(f"{i[0]} {i[1]}")
+        my_data.append(f"{i[0]}\t{i[1]}\t{i[2]}\t{i[3]}\t{i[4]}\t{i[5]}")
         counter += 1
     
     with open(file,'w',encoding='utf-8') as data:
@@ -79,7 +78,7 @@ def split_num(inpt_str: str) -> list:
     return result
 #debug
 if __name__ == "__main__":
-    __init__()
     #add_contact(["qwe","qwe","qwe","qwe","qwe"])
-    #delete_contact(1)
+    delete_contact(1)
     #change_contact(1,["","","qwe","qwe","qwe"])
+    print(1)

@@ -1,7 +1,6 @@
-from curses.ascii import isdigit
-import change
-import import_contacts as imp
-import export as exp
+from GroupHW_Python_ContactBook import change
+# import import_contacts as imp
+# import export as exp
 
 filename = "GroupHW_Python_ContactBook\phones.txt"
 
@@ -15,7 +14,7 @@ def show_contacts():
 
 def change_book(command, inpt_str: str):
     if command == 'd':
-        if(isdigit(inpt_str)):
+        if(inpt_str.isdigit()):
             return change.delete_contact(inpt_str)
         else:
             return "Неправильный ввод! Ожидается id контакта"
@@ -23,7 +22,7 @@ def change_book(command, inpt_str: str):
         return change.add_contact(inpt_str.split("\n"))
     elif command == 'u':
         tmp_list = inpt_str.split("\n")
-        return change.change_contact(tmp_list[0],tmp_list[1:])
+        return change.change_contact(tmp_list[0],tmp_list)
         
 
 
